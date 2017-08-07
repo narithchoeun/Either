@@ -1,0 +1,20 @@
+ <form>
+  <div class="input-group">
+    <input id="autocomplete" type="text" class="form-control" placeholder="Search for a place..."
+            name="searchTerm"
+            [(ngModel)]="searchTerm"/>
+    <div class="input-group-btn">
+      <button type="submit" class="btn btn-primary" (click)="searchPlace()">Search</button>
+    </div>
+  </div>
+</form> 
+
+<div *ngIf="searchResult">
+  <div *ngFor="let res of searchResult; let i = index" [attr.data-index]="i">
+      <div class="well" (click)="showDetails(res[index])" >
+        <h5>{{i+1}}. {{res.name}}</h5>
+        <p><small>Rating: {{res.rating}} <strong>Price: {{res.price_level}}</strong></small></p>
+        <p>{{res.vicinity}}</p>
+      </div>
+  </div>
+</div> 
