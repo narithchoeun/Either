@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   constructor(private _googlePlaces: GooglePlacesService) { }
 
   ngOnInit() {
-    this._googlePlaces.initMap();
+    // this._googlePlaces.initMap();
   }
 }
