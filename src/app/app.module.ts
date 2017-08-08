@@ -5,12 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
-
-import { GooglePlacesService } from './services/google-places.service';
 import { NavComponent } from './components/nav/nav.component';
 import { SelectedPlacesComponent } from './components/selected-places/selected-places.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingComponent } from './components/setting/setting.component';
+
+import { GooglePlacesService } from './services/google-places.service';
+import { SelectedPlacesService } from './services/shared/selected-places.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    GooglePlacesService
+    GooglePlacesService,
+    SelectedPlacesService
   ],
   bootstrap: [AppComponent]
 })
