@@ -5,6 +5,7 @@ export class SelectedPlacesService {
   constructor() { }
 
   private selectedPlaces = [];
+  // private onPlacePush: EventEmitter = new EventEmitter();
 
   pushPlace(place) {
     this.selectedPlaces.push(place);
@@ -12,5 +13,9 @@ export class SelectedPlacesService {
 
   getSelectedLength(): number {
     return this.selectedPlaces.length;
+  }
+
+  getPlaces(): any[] {
+    return this.selectedPlaces;
   }
 }

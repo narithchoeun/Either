@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectedPlacesService } from '../../services/shared/selected-places.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _selectedPlacesService: SelectedPlacesService) { }
 
   ngOnInit() {
   }
+
+  
 
 }
