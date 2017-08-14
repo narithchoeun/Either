@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+// import { HttpClient, HttpParams } from '@angular/common/http';
 // import { Observable } from 'rxjs/Observable';
 import { Constants } from '../misc/constants';
 
@@ -18,7 +18,7 @@ export class GooglePlacesService {
   private results: any = [];
   private inProgress: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   initMap(latitude: number = 33.79246, longitude: number = -118.185005, zoom: number = 14) {
     this.center = new google.maps.LatLng(latitude, longitude);

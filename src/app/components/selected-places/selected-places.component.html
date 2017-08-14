@@ -1,8 +1,42 @@
-<p>
-  selected-places works!
-</p>
+<button type="button" class="btn btn-primary" (click)="onRandomize()"
+    data-toggle="modal" data-target="#placeModal">Randomize</button>
+<button class="btn" (click)="onEdit()">Edit</button>
+
 <ul>
   <li *ngFor="let place of places">
     {{place.name}}
   </li>
 </ul>
+
+<!-- Modal -->
+<div *ngIf="selectedPlace">
+  <div class="modal fade" id="placeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{selectedPlace.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+                <p>
+                  {{selectedPlace.vicinity}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Get Directions</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

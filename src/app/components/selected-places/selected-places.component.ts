@@ -8,10 +8,24 @@ import { SelectedPlacesService } from '../../services/shared/selected-places.ser
 })
 export class SelectedPlacesComponent implements OnInit {
   public places: any[] = [];
+  private selectedPlace;
 
   constructor(private _selectedPlacesService: SelectedPlacesService) { }
 
   ngOnInit() {
     this.places = this._selectedPlacesService.getPlaces();
   }
+
+  onRandomize() {
+    // randomize place selection
+    let randi = Math.floor(Math.random() * this.places.length);
+    console.log(randi);
+    this.selectedPlace = this.places[randi];
+    console.log(this.selectedPlace);
+  }
+
+  onEdit() {
+    console.log('edit');
+  }
+
 }
