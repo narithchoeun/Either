@@ -24,17 +24,6 @@ export class SearchComponent implements OnInit{
   }
   
   searchPlace() {
-    // let latitude: number = 33.79246;
-    // let longitude: number = -118.185005;
-    // let center = new google.maps.LatLng(latitude, longitude);
-
-    // let req = {
-    //   location: center,
-    //   radius: 8047,
-    //   keyword: this.searchTerm
-    // };
-
-    // let results = [];
     console.log(this.searchTerm);
     this.searchResult = this._placesService.search(this.searchTerm);
   }
