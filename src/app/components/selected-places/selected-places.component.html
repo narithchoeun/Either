@@ -1,10 +1,15 @@
 <div class="row">
   <div class="col-sm-2 col-md-2 col-lg-2 mt-2">
-    <button type="button" class="btn btn-primary"(click)="onRandomize()" data-toggle="modal" data-target="#placeModal">Randomize</button>
+    <button [disabled]="!canRandomize" type="button" class="btn btn-primary" (click)="onRandomize()" 
+            data-toggle="modal" data-target="#placeModal">Randomize</button>
   </div>
   <div class="col-sm-2 col-md-2 col-lg-2 mt-2">
     <button type="button" class="btn btn-secondary" (click)="onEdit()">Edit</button>
   </div>
+</div>
+
+<div *ngIf="!canRandomize">
+  Add a place to the list to start random selection
 </div>
 
 <ul>

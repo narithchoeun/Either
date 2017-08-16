@@ -9,11 +9,16 @@ import { SelectedPlacesService } from '../../services/shared/selected-places.ser
 export class SelectedPlacesComponent implements OnInit {
   public places: any[] = [];
   private selectedPlace;
+  private canRandomize: boolean = false;
 
   constructor(private _selectedPlacesService: SelectedPlacesService) { }
 
   ngOnInit() {
     this.places = this._selectedPlacesService.getPlaces();
+    if (this.places.length > 1) {
+      console.log(this.places.length);
+      this.canRandomize = true;
+    }
   }
 
   onRandomize() {

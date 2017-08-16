@@ -1,26 +1,33 @@
- <form>
+ <form> 
   <div class="input-group">
     <input id="autocomplete" type="text" class="form-control" placeholder="Search for a place..."
-            name="searchTerm"
-            [(ngModel)]="searchTerm"/>
+            name="searchTerm" [(ngModel)]="searchTerm"/>
     <span class="input-group-btn">
       <button type="submit" class="btn btn-primary" (click)="searchPlace()">Search</button>
     </span>
   </div>
-</form>  
+ </form>  
 
- <div *ngIf="searchResult">  
+<!-- Guard against a null result -->
+<div *ngIf="searchResult">   
   <div class="list-group"> 
-    <div *ngFor="let res of searchResult; let i = index" [attr.data-index]="i">
+    <div class="mb-2" *ngFor="let res of searchResult; let i = index" [attr.data-index]="i">
       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mt-1"
           (click)="showDetails(i)">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{res.name}}</h5>
           <small>R: {{res.rating}} Price: {{res.price_level}}</small>
         </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small>
+          Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+        </small>
         <!-- <small>{{res.types}}</small> -->
       </a>
+      <div class="btn-group" role="group" aria-label="place_options">
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addToList(i)">Add to List</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm">Add to Favorites</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm">Don't Show Again</button>
+      </div>
     </div>
   </div>
- </div> 
+</div>  

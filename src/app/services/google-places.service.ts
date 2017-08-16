@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient, HttpParams } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
 import { Constants } from '../misc/constants';
 
 // allows TS to recognize google object
@@ -8,13 +6,13 @@ declare var google: any;
 
 @Injectable()
 export class GooglePlacesService {
-  private map;
+  private map: any;
+
   private mapId: string = 'map_canvas';
   private center;
   private userMarkerPath: string = '../../assets/icons/ic_person_pin_black_24px.svg';
   private placesService;
   private markers = [];
-  private apiKey = new Constants().ApiKey;
   private results: any = [];
   private inProgress: boolean = true;
 
@@ -41,10 +39,14 @@ export class GooglePlacesService {
 
     let results = [];
 
-    this.placesService.nearbySearch(req, (response, status) => {
+    this.placesService.nearbySearch(req, (response, status, pagination) => {
       if(status == google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < response.length; i++) {
           results.push(response[i]);
+        }
+
+        if(pagination.hasNextPage) {
+          console.log('pagination true');
         }
         console.log(results);
         return results;
@@ -65,4 +67,5 @@ export class GooglePlacesService {
     }
     console.log('cleared markers');
   }
+  
 }
