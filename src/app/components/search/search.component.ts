@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GooglePlacesService } from '../../services/google-places.service';
 import { SelectedPlacesService } from '../../services/shared/selected-places.service';
-import { Place } from '../../models/Place';
+import { PlaceResult } from '../../models/place-result';
+
+declare var $: any;
 
 @Component({
   selector: 'app-search',
@@ -12,6 +14,7 @@ export class SearchComponent implements OnInit{
   searchTerm: string = '';
   searchResult = [];
   selectedRow: number;
+  private isAdded: boolean = false;
 
   constructor(
     private _placesService: GooglePlacesService,
@@ -29,12 +32,21 @@ export class SearchComponent implements OnInit{
 
   showDetails(index: number) {
     this.selectedRow = index;
-    console.log(this.searchResult[this.selectedRow]);
+    let place = this.searchResult[this.selectedRow];
+    console.log(place);
+
+    // let details = this._placesService.getPlaceDetail(place.place_id);
+    // console.log('details ' + details);
   }
 
   addToList(index: number) {
     this.selectedRow = index;
     this._selectedPlacesService.pushPlace(this.searchResult[this.selectedRow]);
+    this.isAdded = true;
+    setTimeout(() => {
+      $('.alert').alert('close');
+      this.isAdded = false;
+    }, 2000);
   }
 
 }

@@ -1,4 +1,11 @@
- <form> 
+<div *ngIf="isAdded" class="alert alert-success alert-dismissible fade show" role="alert">
+  <button (click)="isAdded = !isAdded" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  has been added to your list.
+</div>
+
+<form> 
   <div class="input-group">
     <input id="autocomplete" type="text" class="form-control" placeholder="Search for a place..."
             name="searchTerm" [(ngModel)]="searchTerm"/>
@@ -9,7 +16,7 @@
  </form>  
 
 <!-- Guard against a null result -->
-<div *ngIf="searchResult">   
+ <div *ngIf="searchResult">   
   <div class="list-group"> 
     <div class="mb-2" *ngFor="let res of searchResult; let i = index" [attr.data-index]="i">
       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mt-1"
@@ -21,7 +28,6 @@
         <small>
           Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
         </small>
-        <!-- <small>{{res.types}}</small> -->
       </a>
       <div class="btn-group" role="group" aria-label="place_options">
         <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addToList(i)">Add to List</button>
@@ -30,4 +36,4 @@
       </div>
     </div>
   </div>
-</div>  
+</div>   

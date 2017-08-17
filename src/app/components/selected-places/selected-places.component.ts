@@ -6,6 +6,7 @@ import { SelectedPlacesService } from '../../services/shared/selected-places.ser
   templateUrl: './selected-places.component.html',
   styleUrls: ['./selected-places.component.css']
 })
+
 export class SelectedPlacesComponent implements OnInit {
   public places: any[] = [];
   private selectedPlace;
