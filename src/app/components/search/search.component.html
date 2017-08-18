@@ -2,7 +2,7 @@
   <button (click)="isAdded = !isAdded" type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-  has been added to your list.
+  Place has been added to your list.
 </div>
 
 <form> 
@@ -22,7 +22,7 @@
       <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mt-1"
           (click)="showDetails(i)">
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">{{res.name}}</h5>
+          <h6 class="mb-1">{{res.name}}</h6>
           <small>R: {{res.rating}} Price: {{res.price_level}}</small>
         </div>
         <small>
@@ -31,8 +31,8 @@
       </a>
       <div class="btn-group" role="group" aria-label="place_options">
         <button type="button" class="btn btn-outline-secondary btn-sm" (click)="addToList(i)">Add to List</button>
-        <button type="button" class="btn btn-outline-secondary btn-sm">Add to Favorites</button>
-        <button type="button" class="btn btn-outline-secondary btn-sm">Don't Show Again</button>
+        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Add to Favorites</button> -->
+        <!-- <button type="button" class="btn btn-outline-secondary btn-sm">Don't Show Again</button> -->
       </div>
     </div>
   </div>

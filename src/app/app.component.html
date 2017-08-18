@@ -1,5 +1,8 @@
-<app-nav></app-nav>
-<div class="container">
-  <router-outlet></router-outlet>  
-  <!-- Route views are displayed here -->
+<div *ngIf="error" id="msg"></div>
+<div *ngIf="!error">
+  <app-nav></app-nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+    <!-- Route views are displayed here -->
+  </div>
 </div>

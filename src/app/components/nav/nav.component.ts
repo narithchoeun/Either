@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedPlacesService } from '../../services/shared/selected-places.service';
+import { SelectedPlacesService } from '../../services/selected-places/selected-places.service';
 
 @Component({
   selector: 'app-nav',

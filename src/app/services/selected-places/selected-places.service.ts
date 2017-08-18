@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SelectedPlacesService {
-  constructor() { }
-
   private selectedPlaces = [];
   private selectedPlace;
-  // private onPlacePush: EventEmitter = new EventEmitter();
+
+  constructor() { }
 
   pushPlace(place) {
     this.selectedPlaces.push(place);

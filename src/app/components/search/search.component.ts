@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GooglePlacesService } from '../../services/google-places.service';
-import { SelectedPlacesService } from '../../services/shared/selected-places.service';
+import { GooglePlacesService } from '../../services/google-places/google-places.service';
+import { SelectedPlacesService } from '../../services/selected-places/selected-places.service';
 import { PlaceResult } from '../../models/place-result';
 
 declare var $: any;
@@ -12,7 +12,7 @@ declare var $: any;
 
 export class SearchComponent implements OnInit{
   searchTerm: string = '';
-  searchResult = [];
+  searchResult;
   selectedRow: number;
   private isAdded: boolean = false;
 
@@ -27,7 +27,13 @@ export class SearchComponent implements OnInit{
   
   searchPlace() {
     console.log(this.searchTerm);
-    this.searchResult = this._placesService.search(this.searchTerm);
+    this._placesService.search(this.searchTerm)
+      .then((response) => {
+        console.log(response);
+        this.searchResult = response;
+      }, (err) => {
+        console.error(err);
+      });
   }
 
   showDetails(index: number) {

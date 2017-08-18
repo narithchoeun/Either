@@ -10,8 +10,9 @@ import { SelectedPlacesComponent } from './components/selected-places/selected-p
 import { HomeComponent } from './components/home/home.component';
 import { SettingComponent } from './components/setting/setting.component';
 
-import { GooglePlacesService } from './services/google-places.service';
-import { SelectedPlacesService } from './services/shared/selected-places.service';
+import { GooglePlacesService } from './services/google-places/google-places.service';
+import { SelectedPlacesService } from './services/selected-places/selected-places.service';
+import { GeolocationService } from './services/geolocation/geolocation.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
   ],
   providers: [
     GooglePlacesService,
-    SelectedPlacesService
+    SelectedPlacesService,
+    GeolocationService
   ],
   bootstrap: [AppComponent]
 })
