@@ -16,7 +16,7 @@ export class GooglePlacesService {
 
   initMap(latitude: number = 33.79246, longitude: number = -118.185005, zoom: number = 14) {
     this.center = new google.maps.LatLng(latitude, longitude);
-    // console.log('center ' + this.center);
+    console.log('center ' + this.center);
 
     let options = {
       center: this.center,
@@ -182,6 +182,10 @@ export class GooglePlacesService {
       });
     });
   };
+
+  createMarker(place) {
+
+  }
 
   clearMarkers() {
     for (let i = 0; i < this.markers.length; i++) {
