@@ -9,8 +9,6 @@ import { GeolocationService } from '../../services/geolocation/geolocation.servi
 })
 export class HomeComponent implements OnInit {
 
-  position;
-
   constructor(
     private _googlePlaces: GooglePlacesService,
     private _geolocationService: GeolocationService
@@ -19,7 +17,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._geolocationService.getLocation()
       .then((response: Position) => {
-        console.log(response);
         let latitude = response.coords.latitude;
         let longitude = response.coords.longitude;
         this._googlePlaces.initMap(latitude, longitude);

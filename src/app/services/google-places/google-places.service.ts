@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PlaceResult } from '../../models/place-result';
 
 // allows TS to recognize google object
 declare var google: any;
@@ -10,13 +11,12 @@ export class GooglePlacesService {
   private center;
   private userMarkerPath: string = '../../assets/icons/ic_person_pin_black_24px.svg';
   private placesService;
-  private markers: any = [];
+  private markers = [];
 
   constructor() { }
 
-  initMap(latitude: number = 33.79246, longitude: number = -118.185005, zoom: number = 14) {
-    this.center = new google.maps.LatLng(latitude, longitude);
-    console.log('center ' + this.center);
+  initMap(lat: number = 33.79246, lng: number = -118.185005, zoom: number = 14) {
+    this.center = { lat: lat, lng: lng};
 
     let options = {
       center: this.center,
@@ -27,7 +27,7 @@ export class GooglePlacesService {
     this.placesService = new google.maps.places.PlacesService(this.map);
   }
 
-  // GOOGLE PLACE SEARCH // 
+  // GOOGLE PLACE SEARCH //
   search = (searchTerm: string) => {
     return new Promise((resolve, reject) => {
       let req = {
@@ -183,8 +183,17 @@ export class GooglePlacesService {
     });
   };
 
-  createMarker(place) {
-
+  createMarker(place, label) {
+    let photos = place.photos;
+    // if (photos) {
+    let marker = new google.maps.Marker({
+      label: `${label}`,
+      map: this.map,
+      position: place.geometry.location,
+      title: place.name,
+      // icon: photos[0].getUrl({ 'maxWidth': 35, 'maxHeight': 35 })
+    });
+    // }
   }
 
   clearMarkers() {
