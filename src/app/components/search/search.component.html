@@ -21,7 +21,7 @@
     <div class="mb-2" *ngFor="let res of searchResult; let i = index" [attr.data-index]="i">
       <a href="#" class="list-group-item list-group-item-action px-1 py-1 mt-2" (click)="showDetails(i)">
         <div class="media">
-          <img class="d-flex align-self-center img-fluid img-thumbnail" src="{{res.icon}}" alt="No img">
+          <img class="d-flex align-self-center img-fluid img-thumbnail" src="{{res.photos[0].getUrl({'maxWidth': 60, 'maxHeight': 60})}}" alt="{{res.icon}}">
           <div class="media-body px-2">
             <div class="media-body d-flex justify-content-between pb-2">
               <small class=""><i class="fa fa-star"></i></small>

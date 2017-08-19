@@ -29,9 +29,8 @@ export class SearchComponent implements OnInit{
     console.log(this.searchTerm);
     this._placesService.search(this.searchTerm)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         this.searchResult = response;
-
         this.drawMarkers(this.searchResult);
       }, (err) => {
         console.error(err);
