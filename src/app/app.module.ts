@@ -13,11 +13,16 @@ import { SettingComponent } from './components/setting/setting.component';
 import { GooglePlacesService } from './services/google-places/google-places.service';
 import { SelectedPlacesService } from './services/selected-places/selected-places.service';
 import { GeolocationService } from './services/geolocation/geolocation.service';
+import { PlaceDetailComponent } from './components/place-detail/place-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
+// Route order matters
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'selected-places', component: SelectedPlacesComponent },
-  { path: 'setting', component: SettingComponent }
+  { path: 'setting', component: SettingComponent },
+  { path: ':id', component: PlaceDetailComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -27,7 +32,9 @@ const routes: Routes = [
     NavComponent,
     SelectedPlacesComponent,
     HomeComponent,
-    SettingComponent
+    SettingComponent,
+    PlaceDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

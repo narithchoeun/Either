@@ -9,7 +9,6 @@ declare var $: any;
   selector: 'app-search',
   templateUrl: './search.component.html',
 })
-
 export class SearchComponent implements OnInit{
   searchTerm: string = '';
   searchResult;
@@ -22,14 +21,14 @@ export class SearchComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this._placesService.initMap();
+    this.searchResult = this._placesService.getPlaceResult();
   }
   
   searchPlace() {
-    console.log(this.searchTerm);
+    // console.log(this.searchTerm);
     this._placesService.search(this.searchTerm)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.searchResult = response;
         this.drawMarkers(this.searchResult);
       }, (err) => {
@@ -46,10 +45,12 @@ export class SearchComponent implements OnInit{
   showDetails(index: number) {
     this.selectedRow = index;
     let place = this.searchResult[this.selectedRow];
-    console.log(place);
+    // console.log(place);
 
-    // let details = this._placesService.getPlaceDetail(place.place_id);
-    // console.log('details ' + details);
+    this._placesService.getPlaceDetail(place.place_id)
+      .then((place) => {
+        console.log('place detail ', place);
+      });
   }
 
   addToList(index: number) {
