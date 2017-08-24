@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GooglePlacesService } from '../../services/google-places/google-places.service';
 import { SelectedPlacesService } from '../../services/selected-places/selected-places.service';
 import { PlaceResult } from '../../models/place-result';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -17,7 +18,8 @@ export class SearchComponent implements OnInit{
 
   constructor(
     private _placesService: GooglePlacesService,
-    private _selectedPlacesService: SelectedPlacesService
+    private _selectedPlacesService: SelectedPlacesService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,10 +27,8 @@ export class SearchComponent implements OnInit{
   }
   
   searchPlace() {
-    // console.log(this.searchTerm);
     this._placesService.search(this.searchTerm)
       .then((response) => {
-        // console.log(response);
         this.searchResult = response;
         this.drawMarkers(this.searchResult);
       }, (err) => {
@@ -45,12 +45,12 @@ export class SearchComponent implements OnInit{
   showDetails(index: number) {
     this.selectedRow = index;
     let place = this.searchResult[this.selectedRow];
-    // console.log(place);
+    this.router.navigate(['/', place.place_id]);
 
-    this._placesService.getPlaceDetail(place.place_id)
-      .then((place) => {
-        console.log('place detail ', place);
-      });
+    // this._placesService.getPlaceDetail(place.place_id)
+    //   .then((place) => {
+    //     console.log('place detail ', place);
+    //   });
   }
 
   addToList(index: number) {

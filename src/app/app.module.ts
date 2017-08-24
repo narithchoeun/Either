@@ -17,7 +17,7 @@ import { PlaceDetailComponent } from './components/place-detail/place-detail.com
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 // Route order matters
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'selected-places', component: SelectedPlacesComponent },
   { path: 'setting', component: SettingComponent },
@@ -39,7 +39,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     GooglePlacesService,

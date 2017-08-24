@@ -86,7 +86,6 @@ export class GooglePlacesService {
 
       this.placesService.getDetails(request, (place, status) => {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-          // console.log('place detail ' + JSON.stringify(place, null, 2));
           this.place = place;
           resolve(place);
         } else {
